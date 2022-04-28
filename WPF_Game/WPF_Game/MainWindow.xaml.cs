@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Windows.Threading;
 
 namespace Wpf_Game
 {
@@ -24,12 +24,34 @@ namespace Wpf_Game
         public MainWindow()
         {
             InitializeComponent();
+            timer.Interval = TimeSpan.FromSeconds(0.1);
+            timer.Tick += AniRender;
+     
+        }
+
+        List<asteroid> asteroids = new List<asteroid>();
+        DispatcherTimer timer= new DispatcherTimer();
+        private void AniRender(object sender, EventArgs e)
+        {
+            for (int i = 0; i < asteroids.Count; i++)
+            {
+                asteroids[i].ChangedPos(timer.Interval, Playground);
+            }
+            Playground.Children.Clear();
+            for (int i = 0; i < asteroids.Count; i++)
+            {
+                asteroids[i].Render(Playground);
+            }
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            asteroid first = new asteroid(Playground);
-            first.Render(Playground);
+            for (int i = 0; i <10; i++)
+            {
+                asteroids.Add(new asteroid(Playground));
+            }
+            timer.Start();
 
         }
     }

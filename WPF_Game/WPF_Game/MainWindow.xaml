@@ -9,7 +9,8 @@
         WindowStartupLocation="CenterOwner">
     <Grid>
         <Button Content="Run" HorizontalAlignment="Left" Margin="30,36,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <Canvas Width="431" x:Name="Playground" Height="212"/>
+        <Polygon Points="100,50 50,100 150,100 100,50 100,30" Fill="Aqua"></Polygon>
+        <Canvas x:Name="Playground" Margin="116,46,29,20"/>
 
 
 
