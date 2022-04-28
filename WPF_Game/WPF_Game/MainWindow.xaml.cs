@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace Wpf_Game
 {
     /// <summary>
@@ -23,6 +24,13 @@ namespace Wpf_Game
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            asteroid first = new asteroid(Playground);
+            first.Render(Playground);
+
         }
     }
 }
